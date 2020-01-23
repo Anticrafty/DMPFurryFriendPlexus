@@ -7,9 +7,13 @@
              x:Class="FurryFriendplexus.EndApp">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
+            <Label Text="Doopravdy chcete ukončit Aplikaci?"
                 VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+                HorizontalOptions="CenterAndExpand"
+                TextColor="Black"
+                FontSize="Large"
+                Margin="20"
+            />
             <!-- Tlačitko na ukončení Applikace --> 
             <Button Text="×"
                     x:Name="Konec_Button"
