@@ -7,9 +7,11 @@
             mc:Ignorable="d"
              x:Class="FurryFriendplexus.MainPage">
 
+    <!-- Hlavní stránky -->
     <local:EndApp Title="Ukončit Applikaci"></local:EndApp>
     <local:Rating Title="Hodnoceni"></local:Rating>
     <local:NewGroup Title="Nová Skupina"></local:NewGroup>
+    <!-- source: https://github.com/TomasVoskovec/DayMe/blob/master/DayMe/Views/MainPage.xaml-->
 
 
 </TabbedPage>

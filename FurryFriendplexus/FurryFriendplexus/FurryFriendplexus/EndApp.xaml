@@ -10,7 +10,18 @@
             <Label Text="Welcome to Xamarin.Forms!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-            <Button Text="Zavřít"/>
+            <!-- Tlačitko na ukončení Applikace --> 
+            <Button Text="×"
+                    x:Name="Konec_Button"
+                    Clicked="Kill_App"
+                    FontSize="Large"
+                    FontAttributes="Bold"
+                    TextColor="Red"
+                    WidthRequest="{Binding Height, Source={x:Reference Konec_Button}}"
+                    VerticalOptions="EndAndExpand"
+                    HorizontalOptions="Start"
+            />
+            <!-- https://forums.xamarin.com/discussion/156116/how-to-create-a-grid-of-square-buttons -->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
