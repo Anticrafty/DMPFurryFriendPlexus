@@ -7,9 +7,13 @@
              x:Class="FurryFriendplexus.Rating">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
+            <Label x:Name="Ciselnik" Text="{Binding Value, Source= {x:Reference RatingSlider}}"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
+            <Slider  x:Name="RatingSlider" Minimum="-100" Maximum="100"
+                     MinimumTrackColor="Red" MaximumTrackColor="Green"
+                     />
         </StackLayout>
     </ContentPage.Content>
+    <!-- Source: https://forums.xamarin.com/discussion/156116/how-to-create-a-grid-of-square-buttons -->
 </ContentPage>
