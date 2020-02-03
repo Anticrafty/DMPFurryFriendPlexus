@@ -26,9 +26,11 @@ namespace FurryFriendplexus
             // https://forums.xamarin.com/discussion/22473/can-you-limit-a-slider-to-only-allow-integer-values-hopefully-snapping-to-the-next-integer
         }
 
+        // Chnaging to NewRating Page
         private void Change_To_NewRating(object sender, EventArgs e)
         {
             Navigation.PushAsync(new NewRating());
+            // https://stackoverflow.com/questions/32048249/how-to-move-from-one-page-to-another-from-button-click-in-xamarin-forms
         }
     }
 }
