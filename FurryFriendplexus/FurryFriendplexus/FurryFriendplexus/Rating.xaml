@@ -8,7 +8,7 @@
     <ContentPage.Content>
         <StackLayout>
             <Button Text="Nový Hodnocení" Clicked="Change_To_NewRating"/>
-            <Label x:Name="Ciselnik" Text="{Binding Value, Source= {x:Reference RatingSlider}}"
+            <Label x:Name="Ciselnik" Text="0%"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
             <Slider  x:Name="RatingSlider" Minimum="-100" Maximum="100"

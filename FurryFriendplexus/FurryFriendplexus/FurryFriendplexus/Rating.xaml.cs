@@ -24,6 +24,7 @@ namespace FurryFriendplexus
 
             RatingSlider.Value = newStep * 1.0;
             // https://forums.xamarin.com/discussion/22473/can-you-limit-a-slider-to-only-allow-integer-values-hopefully-snapping-to-the-next-integer
+            Ciselnik.Text = RatingSlider.Value.ToString() + "%";
         }
 
         // Chnaging to NewRating Page
