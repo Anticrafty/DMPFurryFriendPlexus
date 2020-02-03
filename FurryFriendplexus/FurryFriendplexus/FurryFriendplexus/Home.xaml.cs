@@ -16,5 +16,15 @@ namespace FurryFriendplexus
         {
             InitializeComponent();
         }
+
+        private void Page_Changing(object sender, EventArgs e)
+        {
+            this.Title = CurrentPage.Title;
+        }
+
+        private void TabbedPage_CurrentPageChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

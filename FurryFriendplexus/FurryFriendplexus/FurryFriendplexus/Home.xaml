@@ -7,6 +7,7 @@
             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
             android:TabbedPage.ToolbarPlacement="Bottom"
              mc:Ignorable="d"
+            CurrentPageChanged="Page_Changing"
              x:Class="FurryFriendplexus.Home">
     <!-- Hlavní stránky -->
     <local:EndApp Title="Ukončit Applikaci"></local:EndApp>
