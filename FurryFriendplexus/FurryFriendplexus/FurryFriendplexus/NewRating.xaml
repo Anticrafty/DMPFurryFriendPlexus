@@ -4,19 +4,13 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="FurryFriendplexus.Rating">
+             Title="Nový Hodnocení"
+             x:Class="FurryFriendplexus.NewRating">
     <ContentPage.Content>
         <StackLayout>
-            <Button Text="Nový Hodnocení" Clicked="Change_To_NewRating"/>
-            <Label x:Name="Ciselnik" Text="{Binding Value, Source= {x:Reference RatingSlider}}"
+            <Label Text="Welcome to Xamarin.Forms!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-            <Slider  x:Name="RatingSlider" Minimum="-100" Maximum="100"
-                     MinimumTrackColor="Red" MaximumTrackColor="Green"
-                     ValueChanged="OnSliderValueChanged"
-                     />
         </StackLayout>
     </ContentPage.Content>
-    <!-- Source: https://forums.xamarin.com/discussion/156116/how-to-create-a-grid-of-square-buttons -->
-
 </ContentPage>

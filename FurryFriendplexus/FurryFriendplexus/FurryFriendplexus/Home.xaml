@@ -15,4 +15,5 @@
     <local:NewGroup Title="Nová Skupina"></local:NewGroup>
     <!-- source: https://github.com/TomasVoskovec/DayMe/blob/master/DayMe/Views/MainPage.xaml-->
     <!-- Source: https://montemagno.com/xamarin-forms-official-bottom-navigation-bottom-tabs-on-android/ -->
+    <!--https://forums.xamarin.com/discussion/59163/how-to-get-the-current-page-name-in-tabbed-page-->
 </TabbedPage>
