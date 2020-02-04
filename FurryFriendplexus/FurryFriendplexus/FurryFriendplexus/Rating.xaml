@@ -6,16 +6,47 @@
              mc:Ignorable="d"
              x:Class="FurryFriendplexus.Rating">
     <ContentPage.Content>
-        <StackLayout>
-            <Button Text="Nový Hodnocení" Clicked="Change_To_NewRating"/>
-            <Label x:Name="Ciselnik" Text="0%"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-            <Slider  x:Name="RatingSlider" Minimum="-100" Maximum="100"
-                     MinimumTrackColor="Red" MaximumTrackColor="Green"
-                     ValueChanged="OnSliderValueChanged"
-                     />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout>
+                <Button Text="Nový Tvor" Clicked="Change_To_NewRating" Margin="10"/>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Jména" FontSize="Large"
+                               VerticalOptions="Start" 
+                                HorizontalOptions="Start"
+                           Margin="10"
+                    />
+                </StackLayout>
+                <Label Text="Anti Crafty" FontSize="Medium"
+                               VerticalOptions="Start" 
+                                HorizontalOptions="Start" 
+                               Margin="10"
+                        />
+                <Label Text="Živočišný Druh" FontSize="Large"
+                           VerticalOptions="Start" 
+                            HorizontalOptions="Start" 
+                           Margin="10"
+                           />
+                <Label Text="Drak"
+                           VerticalOptions="Start" FontSize="Medium"
+                            HorizontalOptions="Start"
+                           Margin="10"
+                           />
+                <Label Text="Procentuální názor" FontSize="Large"
+                           VerticalOptions="EndAndExpand" 
+                            HorizontalOptions="Start"
+                           Margin="10"
+                           />
+                <Label x:Name="Ciselnik" Text="0%"
+                    VerticalOptions="End" 
+                    HorizontalOptions="CenterAndExpand" />
+                <Slider  x:Name="RatingSlider" Minimum="-100" Maximum="100"
+                         MinimumTrackColor="Red" MaximumTrackColor="Green"
+                         ValueChanged="OnSliderValueChanged"
+                         VerticalOptions="Start"
+                         />
+                <Button Text="Potvrdit" Margin="10" HorizontalOptions="Center" TextColor="Green"/>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
     <!-- Source: https://forums.xamarin.com/discussion/156116/how-to-create-a-grid-of-square-buttons -->
 

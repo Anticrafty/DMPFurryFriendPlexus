@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             Title="Nový Hodnocení"
+             Title="Nový Tvor"
              x:Class="FurryFriendplexus.NewRating">
     <ContentPage.Content>
         <ScrollView>
@@ -14,13 +14,13 @@
                         <Label Text="Jména" FontSize="Large"
                            VerticalOptions="Start" 
                             HorizontalOptions="Start"
+                             
                         />
                         <Button Text="+" TextColor="Green" FontAttributes="Bold" FontSize="Medium" HorizontalOptions="EndAndExpand" Clicked="Plus_Clicked" />
                     </StackLayout>
                     <Label Text="Anti Crafty" FontSize="Medium"
                            VerticalOptions="Start" 
                             HorizontalOptions="Start" 
-                           Margin="10"
                     />
                     
                 </StackLayout >
@@ -48,6 +48,7 @@
                          MinimumTrackColor="Red" MaximumTrackColor="Green"
                          ValueChanged="OnSliderValueChanged"
                          />
+                <Button Text="Potvrdit" Margin="10" HorizontalOptions="Center" VerticalOptions="EndAndExpand" TextColor="Green"/>
                 <Label HeightRequest="10"></Label>
             </StackLayout>
         </ScrollView>
