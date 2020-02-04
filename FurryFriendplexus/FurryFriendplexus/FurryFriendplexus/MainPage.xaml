@@ -3,12 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-            xmlns:local="clr-namespace:FurryFriendplexus"
+            xmlns:local="clr-namespace:FurryFriendplexus"                  
+            Padding="0,20,0,0"
             mc:Ignorable="d"
              x:Class="FurryFriendplexus.MainPage">
 
     <MasterDetailPage.Master>
-        <local:EndApp x:Name="SidePage" />
+        <local:SideMenu x:Name="SidePage" />
     </MasterDetailPage.Master>
     <MasterDetailPage.Detail>
         <NavigationPage>
@@ -17,4 +18,5 @@
             </x:Arguments>
         </NavigationPage>
     </MasterDetailPage.Detail>
+    
 </MasterDetailPage>
