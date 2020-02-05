@@ -8,7 +8,7 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
-                <Button Text="Nový Tvor" Clicked="Change_To_NewRating" Margin="10"/>
+                <Button Text="Nový Záznam" Clicked="Change_To_NewRating" Margin="10"/>
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Jména" FontSize="Large"
                                VerticalOptions="Start" 

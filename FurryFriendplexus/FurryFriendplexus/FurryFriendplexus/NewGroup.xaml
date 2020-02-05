@@ -6,10 +6,59 @@
              mc:Ignorable="d"
              x:Class="FurryFriendplexus.NewGroup">
     <ContentPage.Content>
+        
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Label Text="Anti Crafty"
+                VerticalOptions="Start" 
+                HorizontalOptions="Center"
+                FontSize="Large"
+                Margin="20"/>
+            <Button Text="V" HorizontalOptions="Center" VerticalOptions="Start" />
+            <Frame Margin="20"  VerticalOptions="FillAndExpand"  OutlineColor="Black">
+                <!--https://stackoverflow.com/questions/42159261/how-to-add-a-border-to-your-xamarin-form-label-->
+                <ScrollView  >
+                    <StackLayout>
+                        <StackLayout Margin="10" Orientation="Horizontal" >
+                            <Label Text="Anti Crafty"
+                            VerticalOptions="StartAndExpand" 
+                            HorizontalOptions="CenterAndExpand"
+                            FontSize="Large"
+                            Margin="10"/>
+                            <Button Text="X" TextColor="Red"
+                                    FontAttributes="Bold" FontSize="Medium" 
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Start"
+                            />
+                        </StackLayout>
+                    </StackLayout>
+                
+                </ScrollView>
+            </Frame>
+            <StackLayout Margin="50,0" Orientation="Horizontal"
+                         HorizontalOptions="Fill" VerticalOptions="End" >
+                <Label Text="Blízcí Přátelé"
+                        HorizontalOptions="CenterAndExpand"
+                        FontSize="Large"
+                        Margin="10"/>
+                <CheckBox HorizontalOptions="EndAndExpand" />
+            </StackLayout>
+            <StackLayout Margin="50,0" Orientation="Horizontal"
+                         HorizontalOptions="Fill" VerticalOptions="End">
+                <Label Text="Dobří Přátelé"
+                        HorizontalOptions="CenterAndExpand"
+                        FontSize="Large"
+                        Margin="10"/>
+                <CheckBox HorizontalOptions="EndAndExpand"/>
+            </StackLayout>
+            <StackLayout Margin="50,0" Orientation="Horizontal"
+                         HorizontalOptions="Fill" VerticalOptions="End">
+                <Label Text="Přátelé"
+                        HorizontalOptions="CenterAndExpand"
+                        FontSize="Large"
+                        Margin="10"/>
+                <CheckBox 
+                        HorizontalOptions="EndAndExpand"/>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
