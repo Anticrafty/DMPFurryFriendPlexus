@@ -8,30 +8,18 @@
     <ContentPage.Content>
         
         <StackLayout>
-            <Label Text="Anti Crafty"
+            <Label x:Name="Nanana"
+                Text="Anti Crafty"
                 VerticalOptions="Start" 
                 HorizontalOptions="Center"
                 FontSize="Large"
                 Margin="20"/>
-            <Button Text="V" HorizontalOptions="Center" VerticalOptions="Start" />
+            <Button Text="V" HorizontalOptions="Center" VerticalOptions="Start" Clicked="Add_Clicked" />
             <Frame Margin="20"  VerticalOptions="FillAndExpand"  OutlineColor="Black">
                 <!--https://stackoverflow.com/questions/42159261/how-to-add-a-border-to-your-xamarin-form-label-->
                 <ScrollView  >
-                    <StackLayout>
-                        <StackLayout Margin="10" Orientation="Horizontal" >
-                            <Label Text="Anti Crafty"
-                            VerticalOptions="StartAndExpand" 
-                            HorizontalOptions="CenterAndExpand"
-                            FontSize="Large"
-                            Margin="10"/>
-                            <Button Text="X" TextColor="Red"
-                                    FontAttributes="Bold" FontSize="Medium" 
-                                    HorizontalOptions="Center"
-                                    VerticalOptions="Start"
-                            />
-                        </StackLayout>
-                    </StackLayout>
-                
+                    <StackLayout x:Name="Names_Stack">                        
+                    </StackLayout>                
                 </ScrollView>
             </Frame>
             <StackLayout Margin="50,0" Orientation="Horizontal"
@@ -59,6 +47,7 @@
                 <CheckBox 
                         HorizontalOptions="EndAndExpand"/>
             </StackLayout>
+            <Button Text="Potvrdit" Margin="10" HorizontalOptions="Center" VerticalOptions="EndAndExpand" TextColor="Green"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
