@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using FurryFriendplexus.LocalDB;
 
 namespace FurryFriendplexus
 {
@@ -13,9 +14,20 @@ namespace FurryFriendplexus
     [DesignTimeVisible(false)]
     public partial class MainPage : MasterDetailPage
     {
+        private LocalDB.LocalDB LDB;
         public MainPage()
         {
             InitializeComponent();
+
+            LDB = new LocalDB.LocalDB();
+
+            bool beenLoged = LDB.LookAtLocalLogin();
+
+            if (beenLoged == false)
+            {
+                Navigation.PushModalAsync(new EndApp());
+            }
+
         }
     }
 }

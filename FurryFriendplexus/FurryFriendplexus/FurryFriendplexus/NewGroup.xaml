@@ -41,7 +41,7 @@
                         HorizontalOptions="CenterAndExpand"
                         FontSize="Large"
                         Margin="10"/>
-                <CheckBox x:Name="DPCH" ClassId="DPCH" HorizontalOptions="EndAndExpand" CheckedChanged="Friends_CheckedChanged" IsChecked="True" />
+                <CheckBox x:Name="DPCH" ClassId="DPCH" HorizontalOptions="EndAndExpand" CheckedChanged="Friends_CheckedChanged" />
             </StackLayout>
             <StackLayout Margin="50,0" Orientation="Horizontal"
                          HorizontalOptions="Fill" VerticalOptions="End">

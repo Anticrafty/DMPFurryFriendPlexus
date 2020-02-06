@@ -33,6 +33,7 @@ namespace FurryFriendplexus
                 VerticalOptions = LayoutOptions.Center,
                 HorizontalOptions = LayoutOptions.Start
             };
+            Nanana.Text = "";
             // Tlačítko na Smazání záznamu
             Button Nope = new Button
             {
@@ -79,22 +80,21 @@ namespace FurryFriendplexus
             CheckBox CH = sender as CheckBox;
 
             // pokud jedno se změnilo 
-            if (CH.ClassId == "PCH")
+            if (CH.ClassId == "PCH" & PCH.IsChecked == true)
             {
-                // Tak tam kde se to změnilo se to zaškrtne a ostatní se za odškrtne
-                CH.IsChecked = true;
+                // Kromě toho kde se to změnilo, se to za odškrtne
                 DPCH.IsChecked = false;
                 BPCH.IsChecked = false;
             }
-            else if (CH.ClassId == "DPCH")
+            else if (CH.ClassId == "DPCH" & DPCH.IsChecked == true)
             {
-                CH.IsChecked = true;
+                DPCH.IsChecked = true;
                 PCH.IsChecked = false;
                 BPCH.IsChecked = false;
             }
-            else if (CH.ClassId == "BPCH")
+            else if (CH.ClassId == "BPCH" & BPCH.IsChecked == true)
             {
-                CH.IsChecked = true;
+                BPCH.IsChecked = true;
                 PCH.IsChecked = false;
                 DPCH.IsChecked = false;
             }
