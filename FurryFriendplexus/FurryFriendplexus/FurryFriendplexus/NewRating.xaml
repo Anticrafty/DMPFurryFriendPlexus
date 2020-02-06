@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             Title="Nový Tvor"
+             Title="Nový Záznam"
              x:Class="FurryFriendplexus.NewRating">
     <ContentPage.Content>
         <ScrollView>
@@ -18,9 +18,9 @@
                         />
                         <Button Text="+" TextColor="Green" FontAttributes="Bold" FontSize="Medium" HorizontalOptions="EndAndExpand" Clicked="Plus_Clicked" />
                     </StackLayout>
-                    <Label Text="Anti Crafty" FontSize="Medium"
+                    <Entry Text="" FontSize="Medium"
                            VerticalOptions="Start" 
-                            HorizontalOptions="Start" 
+                            HorizontalOptions="Fill" 
                     />
                     
                 </StackLayout >
@@ -29,9 +29,9 @@
                         HorizontalOptions="Start" 
                        Margin="10"
                        />
-                <Label Text="Drak"
+                <Entry Text=""
                        VerticalOptions="Start" FontSize="Medium"
-                        HorizontalOptions="Start"
+                        HorizontalOptions="Fill"
                        Margin="10"
                        />
                 <Label Text="Procentuální názor" FontSize="Large"

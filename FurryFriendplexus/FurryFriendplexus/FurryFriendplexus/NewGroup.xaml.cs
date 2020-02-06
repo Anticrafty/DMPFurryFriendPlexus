@@ -25,11 +25,10 @@ namespace FurryFriendplexus
             };
             Label New_Name = new Label
             {
-                Text = Nanana.Text + Names_Stack.Children.Count().ToString(),
+                Text = Nanana.Text,
                 FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
-                VerticalOptions = LayoutOptions.Start,
-                HorizontalOptions = LayoutOptions.Start,
-                Margin = new Thickness(10, 10, 10, 10)
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.Start
             };
             Button Nope = new Button
             {
@@ -44,6 +43,7 @@ namespace FurryFriendplexus
             Stacky.Children.Add(New_Name);
             Stacky.Children.Add(Nope);
             Names_Stack.Children.Add(Stacky);
+            NameCounter.Text = "Počet Zadaných: " + Names_Stack.Children.Count().ToString();
         }
 
         private void X_Clicked(object sender, EventArgs e)
@@ -55,11 +55,30 @@ namespace FurryFriendplexus
             foreach (var Nameris in Names_Stack.Children)
             {
                 NameNumber++;
-                if (NameNumber != 1)
-                {
-                    StackLayout Namer = Nameris as StackLayout;
-                    (Namer.Children[1] as Button).ClassId = NameNumber.ToString();
-                }
+                StackLayout Namer = Nameris as StackLayout;
+                (Namer.Children[1] as Button).ClassId = NameNumber.ToString();
+            }
+            NameCounter.Text = "Počet Zadaných: " + Names_Stack.Children.Count().ToString();
+        }
+
+        private void Friends_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            CheckBox CH = sender as CheckBox;
+
+            if (CH.ClassId == "PCH" & CH.IsChecked == true)
+            {
+                DPCH.IsChecked = false;
+                BPCH.IsChecked = false;
+            }
+            else if (CH.ClassId == "DPCH" & CH.IsChecked == true)
+            {
+                PCH.IsChecked = false;
+                BPCH.IsChecked = false;
+            }
+            else if (CH.ClassId == "BPCH" & CH.IsChecked == true)
+            {
+                PCH.IsChecked = false;
+                DPCH.IsChecked = false;
             }
         }
     }

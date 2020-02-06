@@ -8,14 +8,14 @@
     <ContentPage.Content>
         
         <StackLayout>
-            <Label x:Name="Nanana"
-                Text="Anti Crafty"
+            <Entry x:Name="Nanana"
                 VerticalOptions="Start" 
-                HorizontalOptions="Center"
+                HorizontalOptions="Fill"
                 FontSize="Large"
                 Margin="20"/>
             <Button Text="V" HorizontalOptions="Center" VerticalOptions="Start" Clicked="Add_Clicked" />
-            <Frame Margin="20"  VerticalOptions="FillAndExpand"  OutlineColor="Black">
+            <Label x:Name="NameCounter" Text="Počet Zadaných: 0" HorizontalOptions="Center"/>
+            <Frame Margin="20,0"  VerticalOptions="FillAndExpand"  OutlineColor="Black">
                 <!--https://stackoverflow.com/questions/42159261/how-to-add-a-border-to-your-xamarin-form-label-->
                 <ScrollView  >
                     <StackLayout x:Name="Names_Stack">                        
@@ -28,7 +28,7 @@
                         HorizontalOptions="CenterAndExpand"
                         FontSize="Large"
                         Margin="10"/>
-                <CheckBox HorizontalOptions="EndAndExpand" />
+                <CheckBox x:Name="BPCH" ClassId="BPCH" HorizontalOptions="EndAndExpand" CheckedChanged="Friends_CheckedChanged" />
             </StackLayout>
             <StackLayout Margin="50,0" Orientation="Horizontal"
                          HorizontalOptions="Fill" VerticalOptions="End">
@@ -36,7 +36,7 @@
                         HorizontalOptions="CenterAndExpand"
                         FontSize="Large"
                         Margin="10"/>
-                <CheckBox HorizontalOptions="EndAndExpand"/>
+                <CheckBox x:Name="DPCH" ClassId="DPCH" HorizontalOptions="EndAndExpand" CheckedChanged="Friends_CheckedChanged" />
             </StackLayout>
             <StackLayout Margin="50,0" Orientation="Horizontal"
                          HorizontalOptions="Fill" VerticalOptions="End">
@@ -44,10 +44,9 @@
                         HorizontalOptions="CenterAndExpand"
                         FontSize="Large"
                         Margin="10"/>
-                <CheckBox 
-                        HorizontalOptions="EndAndExpand"/>
+                <CheckBox x:Name="PCH" ClassId="PCH" HorizontalOptions="EndAndExpand" CheckedChanged="Friends_CheckedChanged"/>
             </StackLayout>
-            <Button Text="Potvrdit" Margin="10" HorizontalOptions="Center" VerticalOptions="EndAndExpand" TextColor="Green"/>
+            <Button  Text="Potvrdit" Margin="10" HorizontalOptions="Center" VerticalOptions="End" TextColor="Green"/> 
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

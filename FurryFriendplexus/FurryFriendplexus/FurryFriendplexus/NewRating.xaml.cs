@@ -32,16 +32,16 @@ namespace FurryFriendplexus
         {
             StackLayout Stacky = new StackLayout
             {
-                Orientation = StackOrientation.Horizontal
+                Orientation = StackOrientation.Horizontal,
+                HorizontalOptions = LayoutOptions.Fill,
+                VerticalOptions = LayoutOptions.CenterAndExpand
             };
-            Label New_Name = new Label
+            Entry New_Name = new Entry
             {
-                Text = "Anti Crafty" + Names_Stack.Children.Count().ToString(),
                 FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
                 //https://docs.microsoft.com/cs-cz/xamarin/xamarin-forms/user-interface/text/fonts
-                VerticalOptions = LayoutOptions.Start,
-                HorizontalOptions = LayoutOptions.Start,
-                Margin = new Thickness(10, 10, 10, 10)
+                VerticalOptions = LayoutOptions.StartAndExpand,
+                HorizontalOptions = LayoutOptions.FillAndExpand,
                 // https://stackoverflow.com/questions/24034204/xamarin-forms-margins
             };
             Button Nope = new Button
@@ -50,7 +50,8 @@ namespace FurryFriendplexus
                 TextColor = Color.Red,
                 FontAttributes = FontAttributes.Bold,
                 FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
-                HorizontalOptions = LayoutOptions.EndAndExpand,
+                HorizontalOptions = LayoutOptions.End,
+                VerticalOptions = LayoutOptions.CenterAndExpand,
                 ClassId = Names_Stack.Children.Count().ToString()
                 //https://stackoverflow.com/questions/42858449/get-control-name-in-button-event-handler-method-xamarin-forms/42859064
             };
