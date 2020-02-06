@@ -17,6 +17,7 @@ namespace FurryFriendplexus
             InitializeComponent();
         }
 
+        // Přepínání na Home Stránku
         private void Go_Home(object sender, EventArgs e)
         {
 

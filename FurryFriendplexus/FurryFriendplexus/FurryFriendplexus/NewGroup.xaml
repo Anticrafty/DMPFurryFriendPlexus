@@ -8,13 +8,17 @@
     <ContentPage.Content>
         
         <StackLayout>
+            <!-- Input pro zadání do seznamu -->
             <Entry x:Name="Nanana"
                 VerticalOptions="Start" 
                 HorizontalOptions="Fill"
                 FontSize="Large"
                 Margin="20"/>
+            <!-- Talčitko pro potvrzování adávíní do seznamu -->
             <Button Text="V" HorizontalOptions="Center" VerticalOptions="Start" Clicked="Add_Clicked" />
+            <!-- Počítadlo kolik záznamů je v seznamu -->
             <Label x:Name="NameCounter" Text="Počet Zadaných: 0" HorizontalOptions="Center"/>
+            <!-- Seznam -->
             <Frame Margin="20,0"  VerticalOptions="FillAndExpand"  OutlineColor="Black">
                 <!--https://stackoverflow.com/questions/42159261/how-to-add-a-border-to-your-xamarin-form-label-->
                 <ScrollView  >
@@ -22,6 +26,7 @@
                     </StackLayout>                
                 </ScrollView>
             </Frame>
+            <!-- Výběr úrovně přátelství -->
             <StackLayout Margin="50,0" Orientation="Horizontal"
                          HorizontalOptions="Fill" VerticalOptions="End" >
                 <Label Text="Blízcí Přátelé"
@@ -36,7 +41,7 @@
                         HorizontalOptions="CenterAndExpand"
                         FontSize="Large"
                         Margin="10"/>
-                <CheckBox x:Name="DPCH" ClassId="DPCH" HorizontalOptions="EndAndExpand" CheckedChanged="Friends_CheckedChanged" />
+                <CheckBox x:Name="DPCH" ClassId="DPCH" HorizontalOptions="EndAndExpand" CheckedChanged="Friends_CheckedChanged" IsChecked="True" />
             </StackLayout>
             <StackLayout Margin="50,0" Orientation="Horizontal"
                          HorizontalOptions="Fill" VerticalOptions="End">

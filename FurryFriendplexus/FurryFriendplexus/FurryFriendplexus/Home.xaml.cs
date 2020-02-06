@@ -15,16 +15,15 @@ namespace FurryFriendplexus
         public Home()
         {
             InitializeComponent();
+            // Nastavení Defaultní stránky
+            CurrentPage = Children[1];
+            //https://stackoverflow.com/questions/42863886/how-set-tab-2-in-a-xamarin-forms-tabbed-page-as-the-default-tab-on-startup
         }
 
+        // Měnění nadpisu vedle menu
         private void Page_Changing(object sender, EventArgs e)
         {
             this.Title = CurrentPage.Title;
-        }
-
-        private void TabbedPage_CurrentPageChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

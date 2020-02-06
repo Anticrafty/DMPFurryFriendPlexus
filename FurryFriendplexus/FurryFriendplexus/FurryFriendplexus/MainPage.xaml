@@ -7,7 +7,7 @@
             Padding="0,20,0,0"
             mc:Ignorable="d"
              x:Class="FurryFriendplexus.MainPage">
-
+    
     <MasterDetailPage.Master>
         <local:SideMenu x:Name="SidePage" />
     </MasterDetailPage.Master>

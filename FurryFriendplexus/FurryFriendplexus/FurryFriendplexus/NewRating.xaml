@@ -9,6 +9,7 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
+                <!-- Seznam Jmen -->
                 <StackLayout x:Name="Names_Stack" Margin="10">
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Jména" FontSize="Large"
@@ -16,13 +17,15 @@
                             HorizontalOptions="Start"
                              
                         />
+                        <!-- Tlačítko na přidávání Inputu pro jméno -->
                         <Button Text="+" TextColor="Green" FontAttributes="Bold" FontSize="Medium" HorizontalOptions="EndAndExpand" Clicked="Plus_Clicked" />
                     </StackLayout>
+                    <!-- Hlavní Jmeno -->
                     <Entry Text="" FontSize="Medium"
                            VerticalOptions="Start" 
                             HorizontalOptions="Fill" 
                     />
-                    
+                    <!-- Zadávání Živočišného Druhu -->
                 </StackLayout >
                 <Label Text="Živočišný Druh" FontSize="Large"
                        VerticalOptions="Start" 
@@ -34,6 +37,7 @@
                         HorizontalOptions="Fill"
                        Margin="10"
                        />
+                <!-- Posuvník na Zadávání úrovně vztahu -->
                 <Label Text="Procentuální názor" FontSize="Large"
                        VerticalOptions="Start" 
                         HorizontalOptions="Start"
@@ -48,7 +52,9 @@
                          MinimumTrackColor="Red" MaximumTrackColor="Green"
                          ValueChanged="OnSliderValueChanged"
                          />
+                <!-- Potvrzení Záznamu -->
                 <Button Text="Potvrdit" Margin="10" HorizontalOptions="Center" VerticalOptions="EndAndExpand" TextColor="Green"/>
+                <!-- Mezera -->
                 <Label HeightRequest="10"></Label>
             </StackLayout>
         </ScrollView>

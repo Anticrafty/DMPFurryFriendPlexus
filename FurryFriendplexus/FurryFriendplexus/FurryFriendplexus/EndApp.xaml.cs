@@ -17,6 +17,7 @@ namespace FurryFriendplexus
             InitializeComponent();
         }
 
+        //Ukončování Applikace
         private void Kill_App(object sender, EventArgs e)
         {
             System.Diagnostics.Process.GetCurrentProcess().Kill();

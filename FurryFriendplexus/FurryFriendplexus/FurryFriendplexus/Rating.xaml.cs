@@ -17,7 +17,7 @@ namespace FurryFriendplexus
             InitializeComponent();
         }
 
-        // Snapping slider on integers
+        // Určení posuvníku použe na cvelá čísla a aktualizování jeho číselníku
         void OnSliderValueChanged(object sender, ValueChangedEventArgs e)
         {
             var newStep = Math.Round(e.NewValue / 1.0);
@@ -27,7 +27,7 @@ namespace FurryFriendplexus
             Ciselnik.Text = RatingSlider.Value.ToString() + "%";
         }
 
-        // Chnaging to NewRating Page
+        // Přepínání na Stránku pro nový záznam
         private void Change_To_NewRating(object sender, EventArgs e)
         {
             Navigation.PushAsync(new NewRating());
