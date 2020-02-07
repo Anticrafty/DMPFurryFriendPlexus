@@ -14,20 +14,20 @@ namespace FurryFriendplexus
     [DesignTimeVisible(false)]
     public partial class MainPage : MasterDetailPage
     {
-        private LocalDB.LocalDB LDB;
+        private LocalDB.LocalDB LDB = new LocalDB.LocalDB();
         public MainPage()
         {
             InitializeComponent();
+        }
 
-            LDB = new LocalDB.LocalDB();
 
-            bool beenLoged = LDB.LookAtLocalLogin();
-
-            if (beenLoged == false)
+        private void MasterDetailPage_Appearing(object sender, EventArgs e)
+        {
+            if (!LDB.LookAtLocalLogin())
             {
-                Navigation.PushModalAsync(new EndApp());
+                Navigation.PushModalAsync(new Login());
             }
-
+            (Master as SideMenu).Update_name();
         }
     }
 }

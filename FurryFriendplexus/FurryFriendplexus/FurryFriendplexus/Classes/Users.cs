@@ -13,5 +13,7 @@ namespace FurryFriendplexus.Classes
         public string Nickname { get; set; }
 
         public string Password { get; set; }
-    }
+
+        public bool IsLogged { get; set; }
+}
 }

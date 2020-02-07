@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="FurryFriendplexus.Login">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Přihlašování"
+                TextColor="Black"
+                VerticalOptions="Start" 
+                HorizontalOptions="CenterAndExpand"
+                Margin="50"
+                FontSize="40"
+            />
+            <Label 
+                Text="Uživatelské jméno"
+                VerticalOptions="Start"
+                HorizontalOptions="Start"
+                Margin="20,10,20,0"
+                FontSize="Medium"
+            />
+            <Entry
+                x:Name="UsernameE"
+                VerticalOptions="Start"
+                HorizontalOptions="Fill"
+                Margin="10,0"
+            />
+            <Label 
+                Text="Heslo"
+                VerticalOptions="Start"
+                HorizontalOptions="Start"
+                Margin="20,10,20,0"
+                FontSize="Medium"
+            />
+            <Entry
+                x:Name="PasswordE"
+                VerticalOptions="Start"
+                HorizontalOptions="Fill"
+                Margin="10,0"
+                IsPassword="True"
+            />
+            <Button Text="Registrovat se" Margin="0,20,0,0" HorizontalOptions="Center"  FontSize="Micro" Clicked="Registr_Clicked" />
+            <Button Text="Potvrdit" Margin="0,20,0,0" HorizontalOptions="Center" TextColor="Green" Clicked="Confirm_Clicked" FontSize="Large" FontAttributes="Bold" Padding="12"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

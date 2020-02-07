@@ -12,6 +12,8 @@ namespace FurryFriendplexus
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SideMenu : ContentPage
     {
+        LocalDB.LocalDB LDB = new LocalDB.LocalDB();
+
         public SideMenu()
         {
             InitializeComponent();
@@ -21,8 +23,22 @@ namespace FurryFriendplexus
         private void Go_Home(object sender, EventArgs e)
         {
 
-            Navigation.PushModalAsync(new MainPage());
+            for (int i = 0; i < Navigation.ModalStack.Count(); i++)
+            {
+                Navigation.PopModalAsync();
+            }
 
+        }
+
+        private void LogOut_Click(object sender, EventArgs e)
+        {
+            LDB.LogOutHim();
+            Navigation.PushModalAsync(new Login());
+        }
+
+        public void Update_name()
+        {
+            UsernameV.Text = LDB.WhoLogged();
         }
     }
 }

@@ -6,6 +6,7 @@
             xmlns:local="clr-namespace:FurryFriendplexus"                  
             Padding="0,20,0,0"
             mc:Ignorable="d"
+            Appearing="MasterDetailPage_Appearing"
              x:Class="FurryFriendplexus.MainPage">
     
     <MasterDetailPage.Master>

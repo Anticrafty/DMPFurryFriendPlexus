@@ -9,8 +9,10 @@
              x:Class="FurryFriendplexus.SideMenu">
     <ContentPage.Content>
         <StackLayout>
+            <Label x:Name="UsernameV" FontSize="Medium" HorizontalTextAlignment="Center" />
             <Button Text="Domov" Clicked="Go_Home"/>
             <Button Text="Nastavení" />
+            <Button Text="Odhlásit" Clicked="LogOut_Click"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
