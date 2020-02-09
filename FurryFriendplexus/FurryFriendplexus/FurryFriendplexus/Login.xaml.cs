@@ -12,11 +12,11 @@ namespace FurryFriendplexus
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Login : ContentPage
     {
-        LocalDB.LocalDB LDB = new LocalDB.LocalDB();
+        LocalDB.LocalUserDB LUDB = new LocalDB.LocalUserDB();
         public Login()
         {
             InitializeComponent();
-            if (LDB.LookAtLocalLogin())
+            if (LUDB.LookAtLocalLogin())
             {
                 Navigation.PopModalAsync();
             }
@@ -26,7 +26,7 @@ namespace FurryFriendplexus
         private void Confirm_Clicked(object sender, EventArgs e)
         {
             Classes.Users user = new Classes.Users { Nickname = UsernameE.Text, Password = PasswordE.Text };
-            if(LDB.LoginHim(user))
+            if(LUDB.LoginHim(user))
             {
                 Navigation.PopModalAsync();
             }

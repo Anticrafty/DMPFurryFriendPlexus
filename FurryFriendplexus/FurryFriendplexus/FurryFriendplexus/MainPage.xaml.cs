@@ -14,7 +14,7 @@ namespace FurryFriendplexus
     [DesignTimeVisible(false)]
     public partial class MainPage : MasterDetailPage
     {
-        private LocalDB.LocalDB LDB = new LocalDB.LocalDB();
+        private LocalDB.LocalUserDB LUDB = new LocalDB.LocalUserDB();
         public MainPage()
         {
             InitializeComponent();
@@ -23,11 +23,17 @@ namespace FurryFriendplexus
 
         private void MasterDetailPage_Appearing(object sender, EventArgs e)
         {
-            if (!LDB.LookAtLocalLogin())
+            if (!LUDB.LookAtLocalLogin())
             {
+                for (int i = 0; i < Navigation.ModalStack.Count(); i++)
+                {
+                    Navigation.PopModalAsync();
+                }
                 Navigation.PushModalAsync(new Login());
             }
             (Master as SideMenu).Update_name();
+            (((Detail as NavigationPage).RootPage as Home).Children[1] as Rating).Start_Getting_Rating();
+
         }
     }
 }

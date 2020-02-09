@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             Appearing="Rating_Appearing"
              x:Class="FurryFriendplexus.Rating">
     <ContentPage.Content>
         <ScrollView>
@@ -19,10 +20,6 @@
                 </StackLayout>
                 <!-- Seznam Jmen -->
                 <StackLayout x:Name="Names_Stack" Margin="10">
-                    <Label Text="Anti Crafty" FontSize="Medium"
-                               VerticalOptions="Start" 
-                                HorizontalOptions="Start" 
-                        />
                 </StackLayout>
                 <!-- CO je to za živočišný druh. -->
                 <Label Text="Živočišný Druh" FontSize="Large"
@@ -30,10 +27,11 @@
                             HorizontalOptions="Start" 
                            Margin="10"
                            />
-                <Label Text="Drak"
-                           VerticalOptions="Start" FontSize="Medium"
+                <Label x:Name="Race"
+                            Text=""
+                            VerticalOptions="Start" FontSize="Medium"
                             HorizontalOptions="Start"
-                           Margin="10"
+                            Margin="10"
                            />
                 <!-- Posuvník na Zadávání úrovně vztahu -->
                 <Label Text="Procentuální názor" FontSize="Large"
@@ -50,7 +48,7 @@
                          VerticalOptions="Start"
                          />
                 <!-- Potvrzení Záznamu -->
-                <Button Text="Potvrdit" Margin="10" HorizontalOptions="Center" TextColor="Green"/>
+                <Button x:Name="Confirmer" Text="Potvrdit" Margin="10" HorizontalOptions="Center" TextColor="Green" Clicked="Confirmer_Clicked"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

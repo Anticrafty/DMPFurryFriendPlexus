@@ -12,7 +12,8 @@ namespace FurryFriendplexus
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NewRating : ContentPage
     {
-
+        public LocalDB.LocalUserDB LUDB = new LocalDB.LocalUserDB();
+        public LocalDB.LocalRatingDB LRDB = new LocalDB.LocalRatingDB();
 
         public NewRating()
         {
@@ -86,6 +87,47 @@ namespace FurryFriendplexus
                     StackLayout Namer = Nameris as StackLayout;                    
                     (Namer.Children[1] as Button).ClassId = NameNumber.ToString();
                 }
+            }
+        }
+
+        private void Confirm_Clicked(object sender, EventArgs e)
+        {
+            Classes.Record Newbie = new Classes.Record
+            {
+                Race = RaceInput.Text
+            };
+            Classes.Ratinging NewRating = new Classes.Ratinging
+            {
+                Rate = int.Parse(RatingSlider.Value.ToString()),
+                RaterUserID = LUDB.WhoLogged().Id
+                
+            };
+            List<Classes.Namies> NewNamies = new List<Classes.Namies>();
+            int NameNumber = 0;
+            foreach ( var InputNames in Names_Stack.Children)
+            {
+                NameNumber++;
+                if(NameNumber == 1)
+                {
+                }
+                else if(NameNumber == 2)
+                {
+                    NewNamies.Add(new Classes.Namies { Name = (InputNames as Entry).Text });
+                } 
+                else
+                {
+                    NewNamies.Add(new Classes.Namies { Name = ((InputNames as StackLayout).Children[0] as Entry).Text });
+                }
+            }
+            LRDB.SaveNewRecord(Newbie, NewNamies, NewRating);
+            Navigation.PopAsync();
+        }
+
+        private void NewRating_Appearing(object sender, EventArgs e)
+        {
+            if ( LUDB.WhoLogged().Id == -1)
+            {
+                Navigation.PopAsync();
             }
         }
     }

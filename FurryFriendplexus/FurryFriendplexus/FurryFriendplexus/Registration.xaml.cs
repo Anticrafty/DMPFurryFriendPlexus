@@ -13,7 +13,7 @@ namespace FurryFriendplexus
     public partial class Registration : ContentPage
     {
 
-        LocalDB.LocalDB LDB = new LocalDB.LocalDB();
+        LocalDB.LocalUserDB LUDB = new LocalDB.LocalUserDB();
         public Registration()
         {
             InitializeComponent();
@@ -21,7 +21,7 @@ namespace FurryFriendplexus
         private void Confirm_Clicked(object sender, EventArgs e)
         {
             bool AllOk = true;
-            if (LDB.TryUsername(UsernameE.Text))
+            if (LUDB.TryUsername(UsernameE.Text))
             {
                 UsernameE.Text = "";
                 DisplayAlert("", "Toto jméno už je zabrané", "OK");
@@ -54,7 +54,7 @@ namespace FurryFriendplexus
             if (AllOk)
             {
                 Classes.Users user = new Classes.Users { Nickname = UsernameE.Text, Password = PasswordE.Text };
-                LDB.RegisterHim(user);
+                LUDB.RegisterHim(user);
 
                 DisplayAlert("", "Byl jste zaregistrován", "OK");
                 Navigation.PopModalAsync();

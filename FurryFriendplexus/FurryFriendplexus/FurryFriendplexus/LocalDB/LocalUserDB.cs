@@ -7,12 +7,12 @@ using FurryFriendplexus.Classes;
 
 namespace FurryFriendplexus.LocalDB
 {
-    public class LocalDB
+    public class LocalUserDB
     {
         //https://github.com/praeclarum/sqlite-net/blob/master/README.md
         private string databasePath;
         private SQLiteConnection db;
-        public LocalDB()
+        public LocalUserDB()
         {
             databasePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "PlexusDB.db");
             db = new SQLiteConnection(databasePath);
@@ -69,13 +69,13 @@ namespace FurryFriendplexus.LocalDB
             }
             return false;
         }
-        public string WhoLogged()
+        public Users WhoLogged()
         {
-            string who = "Unknown";
+            Users who = new Users { Nickname = "Unknown", Id = -1, IsLogged = false, Password = "Unknown"};
             var query = db.Table<Users>().Where(v => v.IsLogged.Equals(true));
             foreach (Users user in query)
             {
-                who = user.Nickname;
+                who = user;
             }
             return who;
         }

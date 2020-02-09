@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              Title="Nový Záznam"
+             Appearing="NewRating_Appearing"
              x:Class="FurryFriendplexus.NewRating">
     <ContentPage.Content>
         <ScrollView>
@@ -32,7 +33,8 @@
                         HorizontalOptions="Start" 
                        Margin="10"
                        />
-                <Entry Text=""
+                <Entry x:Name="RaceInput"
+                        Text=""
                        VerticalOptions="Start" FontSize="Medium"
                         HorizontalOptions="Fill"
                        Margin="10"
@@ -53,7 +55,7 @@
                          ValueChanged="OnSliderValueChanged"
                          />
                 <!-- Potvrzení Záznamu -->
-                <Button Text="Potvrdit" Margin="10" HorizontalOptions="Center" VerticalOptions="EndAndExpand" TextColor="Green"/>
+                <Button Text="Potvrdit" Margin="10" HorizontalOptions="Center" VerticalOptions="EndAndExpand" TextColor="Green" Clicked="Confirm_Clicked"/>
                 <!-- Mezera -->
                 <Label HeightRequest="10"></Label>
             </StackLayout>
