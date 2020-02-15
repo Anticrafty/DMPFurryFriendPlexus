@@ -11,5 +11,7 @@ namespace FurryFriendplexus.Classes
         public int Id { get; set; }
         [Indexed]
         public string Race { get; set; }
+        public int LinkedUserID { get; set; }
+        public bool IsLinkedToUSer { get; set; }
     }
 }

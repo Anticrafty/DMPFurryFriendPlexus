@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:autocomplete="clr-namespace:Syncfusion.SfAutoComplete.XForms;assembly=Syncfusion.SfAutoComplete.XForms"
              mc:Ignorable="d"
              Title="Nový Záznam"
              Appearing="NewRating_Appearing"
@@ -10,42 +11,49 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Jména" FontSize="Large"
+                           VerticalOptions="Start" 
+                            HorizontalOptions="Start"                             
+                            Margin="20"
+                        />
+                    <!-- Tlačítko na přidávání Inputu pro jméno -->
+                    <Button x:Name="Plus" Text="+" TextColor="Green" FontAttributes="Bold" FontSize="Medium" Margin="15" HorizontalOptions="EndAndExpand" Clicked="Plus_Clicked" />
+                </StackLayout>
                 <!-- Seznam Jmen -->
                 <StackLayout x:Name="Names_Stack" Margin="10">
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="Jména" FontSize="Large"
-                           VerticalOptions="Start" 
-                            HorizontalOptions="Start"
-                             
-                        />
-                        <!-- Tlačítko na přidávání Inputu pro jméno -->
-                        <Button Text="+" TextColor="Green" FontAttributes="Bold" FontSize="Medium" HorizontalOptions="EndAndExpand" Clicked="Plus_Clicked" />
-                    </StackLayout>
+                    
                     <!-- Hlavní Jmeno -->
-                    <Entry Text="" FontSize="Medium"
-                           VerticalOptions="Start" 
-                            HorizontalOptions="Fill" 
+                    <autocomplete:SfAutoComplete x:Name="Nanana"
+                        VerticalOptions="Start" 
+                        HorizontalOptions="Fill"
+                       Unfocused="Nanana_Unfocused" 
                     />
                     <!-- Zadávání Živočišného Druhu -->
                 </StackLayout >
                 <Label Text="Živočišný Druh" FontSize="Large"
-                       VerticalOptions="Start" 
+                        VerticalOptions="Start" 
                         HorizontalOptions="Start" 
-                       Margin="10"
-                       />
+                        Margin="10"
+                />
                 <Entry x:Name="RaceInput"
                         Text=""
-                       VerticalOptions="Start" FontSize="Medium"
+                        VerticalOptions="Start" FontSize="Medium"
                         HorizontalOptions="Fill"
-                       Margin="10"
-                       />
+                        Margin="10"
+                />
+                <Label x:Name="GivenRace" IsVisible="False"
+                           VerticalOptions="Start" FontSize="Medium"
+                            HorizontalOptions="Fill"
+                            Margin="10"
+                />
                 <!-- Posuvník na Zadávání úrovně vztahu -->
-                <Label Text="Procentuální názor" FontSize="Large"
+                <Label x:Name="PercentLabel" Text="Procentuální názor" FontSize="Large"
                        VerticalOptions="Start" 
                         HorizontalOptions="Start"
                        Margin="10"
                        />
-                <Label x:Name="Ciselnik" Text="0%" FontSize="Medium"
+                <Label x:Name="NumberDisplay" Text="0%" FontSize="Medium"
                         VerticalOptions="Start" 
                         HorizontalOptions="Center"
                        Margin="10"

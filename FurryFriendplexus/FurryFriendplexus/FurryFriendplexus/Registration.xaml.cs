@@ -53,11 +53,11 @@ namespace FurryFriendplexus
 
             if (AllOk)
             {
-                Classes.Users user = new Classes.Users { Nickname = UsernameE.Text, Password = PasswordE.Text };
+                Classes.Users user = new Classes.Users { Nickname = UsernameE.Text, Password = PasswordE.Text, IsLogged = true};
                 LUDB.RegisterHim(user);
 
                 DisplayAlert("", "Byl jste zaregistrován", "OK");
-                Navigation.PopModalAsync();
+                Navigation.PushModalAsync(new NewRating(true));
             }
         }
         private void Login_Clicked(object sender, EventArgs e)

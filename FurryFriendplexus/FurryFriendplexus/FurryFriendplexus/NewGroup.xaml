@@ -3,16 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:autocomplete="clr-namespace:Syncfusion.SfAutoComplete.XForms;assembly=Syncfusion.SfAutoComplete.XForms"
              mc:Ignorable="d"
              x:Class="FurryFriendplexus.NewGroup">
     <ContentPage.Content>
         
         <StackLayout>
             <!-- Input pro zadání do seznamu -->
-            <Entry x:Name="Nanana"
+            <autocomplete:SfAutoComplete x:Name="Nanana"
                 VerticalOptions="Start" 
                 HorizontalOptions="Fill"
-                FontSize="Large"
                 Margin="20"/>
             <!-- Talčitko pro potvrzování adávíní do seznamu -->
             <Button Text="V" HorizontalOptions="Center" VerticalOptions="Start" Clicked="Add_Clicked" />

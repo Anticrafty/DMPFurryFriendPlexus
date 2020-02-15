@@ -31,13 +31,13 @@ namespace FurryFriendplexus
 
             RatingSlider.Value = newStep * 1.0;
             // https://forums.xamarin.com/discussion/22473/can-you-limit-a-slider-to-only-allow-integer-values-hopefully-snapping-to-the-next-integer
-            Ciselnik.Text = RatingSlider.Value.ToString() + "%";
+            NumberDisplay.Text = RatingSlider.Value.ToString() + "%";
         }
 
         // Přepínání na Stránku pro nový záznam
         private void Change_To_NewRating(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new NewRating());
+            Navigation.PushAsync(new NewRating(false));
             // https://stackoverflow.com/questions/32048249/how-to-move-from-one-page-to-another-from-button-click-in-xamarin-forms
         }
         public void Start_Getting_Rating()
@@ -48,8 +48,27 @@ namespace FurryFriendplexus
         private void Get_New_Rating()
         {
             if (LUDB.WhoLogged().Id != -1)
-            { 
+            {
                 ToRate = LRDB.GetStartingRecords(LUDB.WhoLogged().Id);
+                if (ToRate.Count() != 0)
+                {
+                    int countOfRecord = 0;
+                    List<int> countersOfRecords = new List<int>();
+                    foreach (Classes.Record record in ToRate)
+                    {
+                        if (record.LinkedUserID == LUDB.WhoLogged().Id)
+                        {
+                            countersOfRecords.Add(countOfRecord);
+                        }
+                        countOfRecord++;
+                    }
+                    countersOfRecords.Reverse();
+                    //https://www.geeksforgeeks.org/different-ways-to-sort-an-array-in-descending-order-in-c-sharp/
+                    foreach (int recordID in countersOfRecords)
+                    {
+                        ToRate.Remove(ToRate[recordID]);
+                    };
+                }
                 NumberToRate = ToRate.Count();
                 NumberLastRated = 0;
             }   

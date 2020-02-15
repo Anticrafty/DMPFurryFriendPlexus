@@ -39,7 +39,7 @@
                             HorizontalOptions="Start"
                            Margin="10"
                            />
-                <Label x:Name="Ciselnik" Text="0%"
+                <Label x:Name="NumberDisplay" Text="0%"
                     VerticalOptions="End" 
                     HorizontalOptions="CenterAndExpand" />
                 <Slider  x:Name="RatingSlider" Minimum="-100" Maximum="100"

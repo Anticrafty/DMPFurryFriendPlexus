@@ -12,9 +12,19 @@ namespace FurryFriendplexus
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NewGroup : ContentPage
     {
+        LocalDB.LocalRatingDB LRDB = new LocalDB.LocalRatingDB();
         public NewGroup()
         {
+            List<string> AutoCompleteItems = new List<string>();
+            List<Classes.Namies> Names = LRDB.GelAllNames();
+            foreach (Classes.Namies Name in Names)
+            {
+                AutoCompleteItems.Add(Name.Name);
+            }            
             InitializeComponent();
+            Nanana.AutoCompleteSource = AutoCompleteItems;
+            // sources: https://forums.xamarin.com/discussion/140933/autocomplete-entry-in-xamarin-forms
+            // https://help.syncfusion.com/xamarin/autocomplete/getting-started?cs-save-lang=1&cs-lang=csharp
         }
 
         // Přidávání záznamů z Inputu do seznamu
