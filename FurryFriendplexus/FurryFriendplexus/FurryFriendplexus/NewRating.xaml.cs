@@ -113,40 +113,54 @@ namespace FurryFriendplexus
         {
             if (Selected == null)
             {
-                Classes.Record Newbie = new Classes.Record
-                {
-                    Race = RaceInput.Text,
-                    IsLinkedToUSer = false
-                };
-                Classes.Ratinging NewRating = new Classes.Ratinging
-                {
-                    Rate = int.Parse(RatingSlider.Value.ToString()),
-                    RaterUserID = LUDB.WhoLogged().Id
-                };
-                List<Classes.Namies> NewNamies = new List<Classes.Namies>();
-                int NameNumber = 0;
-                foreach (var InputNames in Names_Stack.Children)
-                {
-                    NameNumber++;
-                    if (NameNumber == 1)
+                if ((Names_Stack.Children[0] as SfAutoComplete).Text != null && RaceInput.Text != null )
+                { 
+                    Classes.Record Newbie = new Classes.Record
                     {
-                        NewNamies.Add(new Classes.Namies { Name = (InputNames as SfAutoComplete).Text });
+                        Race = RaceInput.Text,
+                        IsLinkedToUSer = false
+                    };
+                    Classes.Ratinging NewRating = new Classes.Ratinging
+                    {
+                        Rate = int.Parse(RatingSlider.Value.ToString()),
+                        RaterUserID = LUDB.WhoLogged().Id
+                    };
+                    List<Classes.Namies> NewNamies = new List<Classes.Namies>();
+                    int NameNumber = 0;
+                    foreach (var InputNames in Names_Stack.Children)
+                    {
+                        NameNumber++;
+                        if (NameNumber == 1)
+                        {
+                            NewNamies.Add(new Classes.Namies { Name = (InputNames as SfAutoComplete).Text });
+                        }
+                        else
+                        {
+                            if (((InputNames as StackLayout).Children[0] as Entry).Text != null)
+                            { 
+                                NewNamies.Add(new Classes.Namies { Name = ((InputNames as StackLayout).Children[0] as Entry).Text });
+                            }   
+                            else
+                            {
+                                DisplayAlert("", "Přídavné políčko jména nebylo vyplněno.", "OK");
+                            }
+                        }
+                    }
+                    if (Himself)
+                    {
+                        Newbie.LinkedUserID = LUDB.WhoLogged().Id;
+                        Newbie.IsLinkedToUSer = true;
+                        LRDB.SaveNewUsersRecord(Newbie, NewNamies);
                     }
                     else
                     {
-                        NewNamies.Add(new Classes.Namies { Name = ((InputNames as StackLayout).Children[0] as Entry).Text });
+
+                        LRDB.SaveNewRecord(Newbie, NewNamies, NewRating);
                     }
-                }
-                if (Himself)
-                {
-                    Newbie.LinkedUserID = LUDB.WhoLogged().Id;
-                    Newbie.IsLinkedToUSer = true;
-                    LRDB.SaveNewUsersRecord(Newbie, NewNamies);
                 }
                 else
                 {
-
-                    LRDB.SaveNewRecord(Newbie, NewNamies, NewRating);
+                    DisplayAlert("", "Jméno a rasa musejí být vyplněný.", "OK");
                 }
             }
             else
@@ -278,7 +292,7 @@ namespace FurryFriendplexus
                         }
                 }
                     GivenRace.Text = Selected.Race;
-                     AlredyRated = LRDB.GetUsersRatingOfRecord(Selected, LUDB.WhoLogged());
+                     AlredyRated = LRDB.GetUsersRatingOfRecord(Selected.Id, LUDB.WhoLogged().Id);
                     if (AlredyRated != null)
                     {
                         RatingSlider.Value = AlredyRated.Rate;

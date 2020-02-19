@@ -93,6 +93,7 @@ namespace FurryFriendplexus
                     Names_Stack.Children.Add(Namie);
                 }
                 Confirmer.IsEnabled = true;
+                RatingSlider.Value = 0;
             }
             if (ToRate.Count() == 0)
             {

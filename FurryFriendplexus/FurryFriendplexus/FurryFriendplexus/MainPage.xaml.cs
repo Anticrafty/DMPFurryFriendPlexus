@@ -42,6 +42,7 @@ namespace FurryFriendplexus
             }
             (Master as SideMenu).Update_name();
             (((Detail as NavigationPage).RootPage as Home).Children[1] as Rating).Start_Getting_Rating();
+            (((Detail as NavigationPage).RootPage as Home).Children[2] as NewGroup).Actualize_NameList();
 
         }
     }

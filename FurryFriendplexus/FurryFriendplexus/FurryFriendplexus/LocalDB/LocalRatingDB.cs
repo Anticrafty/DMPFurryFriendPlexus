@@ -82,10 +82,45 @@ namespace FurryFriendplexus.LocalDB
             }
             return Finded;
         }
+        public Namies GetName(int IDNamed)
+        {
+            var query = db.Table<Namies>().Where(v => v.RecordID.Equals(IDNamed));
+            foreach(Namies name in query)
+            {
+                return name;
+            }
+            return null;
+        }
         #endregion
         #region Get Many by his ID
         #endregion
         #region Get one by others id
+
+        public int GetUsersIDFromNamesID(int RecordID)
+        {
+            int UsersID = -1;
+            var query = db.Table<Record>().Where(v => v.Id.Equals(RecordID));
+            Record OthersRecord = new Record();
+            foreach (Record finded in query)
+            {
+                OthersRecord = finded;
+            }
+            if (OthersRecord.IsLinkedToUSer)
+            {
+                UsersID = OthersRecord.LinkedUserID;
+            }
+            return UsersID;
+        }
+        public Record GetUsersRecord(int UsersID)
+        {
+            var query = db.Table<Record>().Where(v => v.LinkedUserID.Equals(UsersID));
+            foreach (Record User in query)
+            {
+                return User;
+            }
+            return null;
+        }
+
         #endregion
         #region Get many by others ID
         public List<Namies> GetNames(int RecordID)
@@ -97,6 +132,16 @@ namespace FurryFriendplexus.LocalDB
                 Output.Add(namies);
             }
             return Output;
+        }
+        public List<Ratinging> GetUsersRatings(int UsersID)
+        {
+            var query = db.Table<Ratinging>().Where(v => v.RaterUserID.Equals(UsersID));
+            List<Ratinging> ItsRatings = new List<Ratinging>();
+            foreach (Ratinging ratiee in query)
+            {
+                ItsRatings.Add(ratiee);
+            }
+            return ItsRatings;
         }
         #endregion
         #region Get All
@@ -135,9 +180,9 @@ namespace FurryFriendplexus.LocalDB
             }
             return Output;
         }
-        public Ratinging GetUsersRatingOfRecord(Record selected, Users selector)
+        public Ratinging GetUsersRatingOfRecord(int selectedID, int selectorID)
         {
-            var query = db.Table<Ratinging>().Where(v => v.RaterUserID.Equals(selector.Id) & v.RecordID.Equals(selected.Id));
+            var query = db.Table<Ratinging>().Where(v => v.RaterUserID.Equals(selectorID) & v.RecordID.Equals(selectedID));
 
             Ratinging Output = null;
             foreach (Ratinging ratiee in query)

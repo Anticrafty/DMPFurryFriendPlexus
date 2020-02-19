@@ -51,7 +51,7 @@
                         Margin="10"/>
                 <CheckBox x:Name="PCH" ClassId="PCH" HorizontalOptions="EndAndExpand" CheckedChanged="Friends_CheckedChanged"/>
             </StackLayout>
-            <Button  Text="Potvrdit" Margin="10" HorizontalOptions="Center" VerticalOptions="End" TextColor="Green"/> 
+            <Button  Text="Potvrdit" Margin="10" HorizontalOptions="Center" VerticalOptions="End" TextColor="Green" Clicked="Confirm_Clicked"/> 
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
