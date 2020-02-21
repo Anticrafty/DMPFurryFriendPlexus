@@ -9,6 +9,7 @@
              Appearing="NewRating_Appearing"
              x:Class="FurryFriendplexus.NewRating">
     <ContentPage.Content>
+        <!-- Stránka na zadávání nových záznamů a upraqvování již exustujících a jejich hodnocení-->
         <ScrollView>
             <StackLayout>
                 <StackLayout Orientation="Horizontal">

@@ -6,6 +6,7 @@
              mc:Ignorable="d"
              Appearing="Rating_Appearing"
              x:Class="FurryFriendplexus.Rating">
+    <!-- základní stránka při spuštění aplikace na hodnocení nově zadných záznamáu, které ještě nebyli hodnoceny-->
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>

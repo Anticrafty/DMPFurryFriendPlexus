@@ -7,7 +7,7 @@
              mc:Ignorable="d"
              x:Class="FurryFriendplexus.NewGroup">
     <ContentPage.Content>
-        
+        <!-- Stránka na zadávání vytvoření nové skupiny-->
         <StackLayout>
             <!-- Input pro zadání do seznamu -->
             <autocomplete:SfAutoComplete x:Name="Nanana"

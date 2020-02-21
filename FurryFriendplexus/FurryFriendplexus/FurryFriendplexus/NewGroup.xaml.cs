@@ -12,13 +12,16 @@ namespace FurryFriendplexus
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NewGroup : ContentPage
     {
+        //  Objekt databáze pro záznamy a jejich jména a hodnocení
         LocalDB.LocalRatingDB LRDB = new LocalDB.LocalRatingDB();
+        // seznam jmen pro našeptávače
         List<Classes.Namies> Names = new List<Classes.Namies>();
         public NewGroup()
         {
             InitializeComponent();
             Actualize_NameList();
         }
+        // funkce na aktualzování jmen v našeptávači
         public void Actualize_NameList()
         {
 
@@ -38,6 +41,7 @@ namespace FurryFriendplexus
             bool OkToGo = true;
 
             bool NameExists = false;
+            // pokud jméno existuje
             foreach (Classes.Namies name in Names)
             {
                 if (name.Name == Nanana.Text)
@@ -47,10 +51,11 @@ namespace FurryFriendplexus
             }
             if (!NameExists)
             {
+                // pokud neexistuje upozorněte uživatele
                 OkToGo = false;
                 DisplayAlert("", "Tento záznam neexistuje.", "OK");
             }
-
+            // pokud záznam ještě není v listu
             bool AlredyInTheList = false;
             int IDOfSelected = -1;
             foreach (Classes.Namies name in Names)
@@ -68,13 +73,14 @@ namespace FurryFriendplexus
                     {
                         if(name.RecordID == IDOfSelected)
                         {
+                            // pokud je oznámit uživately
                             OkToGo = false;
                             DisplayAlert("", "Tento záznam už je zadaný v seznamu.", "OK");
                         }
                     }
                 }
             }
-
+            // tak se může vložit do listu záznamů
             if(OkToGo)
             { 
                 // Obal záznamu
@@ -158,13 +164,16 @@ namespace FurryFriendplexus
                 DPCH.IsChecked = false;
             }
         }
-
+        // funkce tlačítka na potvrzení výběrů na stránce
         private void Confirm_Clicked(object sender, EventArgs e)
         {
+            // pokud list není prázdný
             if(Names_Stack.Children.Count() != 0)
             {
+                // a pokud je nějaká uroveŇ vyprána
                 if (DPCH.IsChecked == true || PCH.IsChecked == true || BPCH.IsChecked == true)
                 {
+                    // vložit vybrané jména a úroveň přátelství do objektů
                     List<Classes.Namies> SelectedNames = new List<Classes.Namies>();
                     int LevelOfSearch = 0;
                     foreach(StackLayout StackInList in Names_Stack.Children)
@@ -189,16 +198,19 @@ namespace FurryFriendplexus
                     {
                         LevelOfSearch = 3;
                     }
+                    // a tyto objekty poslat ado stánky na ukazování vtahů zadaných uživatelů 
                     Navigation.PushAsync(new Comparison(SelectedNames, LevelOfSearch));
 
                 }
                 else
                 {
+                    // pokud není vybrána úroveň přáteství tak upozornit uživatele
                     DisplayAlert("", "Musí se zaškrtnout jakou úroveň přátelství se má hledat.", "OK");
                 }
             }
             else
             {
+                // pokud v listu není žádný záznam, tak pozornit uživatele
                 DisplayAlert("", "V seznamu musí být ňějaký záznam.", "OK");
             }
         }

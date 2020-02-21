@@ -13,15 +13,22 @@ namespace FurryFriendplexus
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NewRating : ContentPage
     {
+        // objekt databáze pro uživatele
         public LocalDB.LocalUserDB LUDB = new LocalDB.LocalUserDB();
+        // Objekt databáze pro záznamy a jejich jména a hodnocení
         public LocalDB.LocalRatingDB LRDB = new LocalDB.LocalRatingDB();
+        // Jestli ej za cíl hodnotit někoho nebo jen vytvořit záznam aktuálního uživatele
         public bool Himself = false;
+        //  seznam jmen pro našeptávače
         public List<Classes.Namies> Names = new List<Classes.Namies>();
+        // objekt pro záznam poku se chce jen upravovat
         public Classes.Record Selected = null;
+        // objekt pro honocení záznamu od tohoto uživatele
         Classes.Ratinging AlredyRated = null;
 
         public NewRating(bool himself)
         {
+            // naládování našeptávače
             List<string> AutoCompleteItems = new List<string>();
             Names = LRDB.GelAllNames();            
             foreach (Classes.Namies Name in Names)
@@ -31,6 +38,7 @@ namespace FurryFriendplexus
             InitializeComponent();
             Nanana.AutoCompleteSource = AutoCompleteItems;
             Himself = himself;
+            // pokud jen se pojí ke svému záznamu, tak se nemůže hodnotit 
             if(himself)
             {
                 RatingSlider.IsVisible = false;
@@ -108,23 +116,29 @@ namespace FurryFriendplexus
                 }
             }
         }
-
+        // funkce tlačítka na zaslání zánamu a jeho jmen a hodnocení
         private void Confirm_Clicked(object sender, EventArgs e)
         {
+            // pokud je to nový záznam
             if (Selected == null)
             {
+                // pokud je zadáno hlavní jméno a živočišný druh
                 if ((Names_Stack.Children[0] as SfAutoComplete).Text != null && RaceInput.Text != null )
                 { 
+                    //Tak vložit svých do objektů
+                    // Nový záznam
                     Classes.Record Newbie = new Classes.Record
                     {
                         Race = RaceInput.Text,
                         IsLinkedToUSer = false
                     };
+                    // Nový hodncení
                     Classes.Ratinging NewRating = new Classes.Ratinging
                     {
                         Rate = int.Parse(RatingSlider.Value.ToString()),
                         RaterUserID = LUDB.WhoLogged().Id
                     };
+                    // A všecna jeho jména které jsou zadána
                     List<Classes.Namies> NewNamies = new List<Classes.Namies>();
                     int NameNumber = 0;
                     foreach (var InputNames in Names_Stack.Children)
@@ -142,39 +156,50 @@ namespace FurryFriendplexus
                             }   
                             else
                             {
+                                // pokud políčko jména, které není hlavní, je prázné, tak se nepřidá do objektu a upozorní se atuální uživatel
                                 DisplayAlert("", "Přídavné políčko jména nebylo vyplněno.", "OK");
                             }
                         }
                     }
+                    // pokud hodnotí sebe
                     if (Himself)
                     {
+                        // tak se záznam spojí s jeho uživatelským záznamem
                         Newbie.LinkedUserID = LUDB.WhoLogged().Id;
                         Newbie.IsLinkedToUSer = true;
+                        // a celí se to pošle
                         LRDB.SaveNewUsersRecord(Newbie, NewNamies);
                     }
                     else
                     {
-
+                        // pokud nehodnotí sebe, tak se to už pošle
                         LRDB.SaveNewRecord(Newbie, NewNamies, NewRating);
                     }
                 }
                 else
                 {
+                    // pokud není hlavní jméno nebo živočišný druh zadán tak e upozorní aktualní uživatel
                     DisplayAlert("", "Jméno a rasa musejí být vyplněný.", "OK");
                 }
             }
+            // pokud už záznam exituje
             else
             {
+                // pokud zaznamenává sebe
                 if (Himself)
                 {
+                    // tak se existujícímu záznamu připíše aktuální uživatel
                     Selected.LinkedUserID = LUDB.WhoLogged().Id;
                     Selected.IsLinkedToUSer = true;
                     LRDB.RecordHaveRegistered(Selected);
                 }
+                // pokud upravuje záznam někoho jinýho
                 else
                 { 
+                   // tak pokud nebyl záznam ještě hodnocen aktuáním uživatelem
                     if (AlredyRated == null)
                     {
+                        // tak se zapíše nové hodnocení tohoto záznamu od aktuálního uživatele
                         Classes.Ratinging newRating = new Classes.Ratinging
                         {
                             Rate = int.Parse(RatingSlider.Value.ToString()),
@@ -183,12 +208,15 @@ namespace FurryFriendplexus
                         };
                         LRDB.SaveRating(newRating);
                     }
+                    // pokud už byl hodnocen aktuáním uživatelem
                     else
                     {
+                        // tak se jen změní 
                         AlredyRated.Rate = int.Parse(RatingSlider.Value.ToString());
                         LRDB.UpdateRating(AlredyRated);
                     }
                 }
+                // zkontoluje se jestli nebylo zadáno nevé jméno, pokud jo, tak se nevé jména zabalí do objektu a zapaíšou
                 foreach (var InputNames in Names_Stack.Children)
                 {
                     if (InputNames is StackLayout)
@@ -202,6 +230,7 @@ namespace FurryFriendplexus
                 }
 
             }
+            // poté se stránka uzavře
             if(Himself)
             {
                 Navigation.PopModalAsync();
@@ -214,7 +243,7 @@ namespace FurryFriendplexus
             }
 
         }
-
+        // pokud uživatel není přihlášený, tak mu nedovolíme jít na tuto stránku
         private void NewRating_Appearing(object sender, EventArgs e)
         {
             if ( LUDB.WhoLogged().Id == -1)
@@ -222,12 +251,16 @@ namespace FurryFriendplexus
                 Navigation.PopAsync();
             }
         }
+        // pokud uživatel zapsal nové jméno
         private void Nanana_Unfocused(object sender, FocusEventArgs e)
         {
+            //, tak zkontrolujeme, jestli jméno nepatří již nějakému záznamu
             foreach (Classes.Namies name in Names)
             {
+                // pokud patří nějakému záznamu a pokud hodnozí sebe atento záznam nikomu nepatří a jestli záznam nepatří jemu samontnému.
                 if (Nanana.Text == name.Name && (!Himself || ( Himself && !LRDB.FindRecord(name.RecordID).IsLinkedToUSer)) && LRDB.FindRecord(name.RecordID).Id != LUDB.WhoLogged().Id)
                 {
+                    // tak předzadej všechny prvky a shovej místa pro doplnění
                     Selected = LRDB.FindRecord(name.RecordID);
                     foreach ( var Children in Names_Stack.Children)
                     {
@@ -298,21 +331,27 @@ namespace FurryFriendplexus
                         RatingSlider.Value = AlredyRated.Rate;
                     }
                 }
+                // pokud má zaznamenat svůj záznama někdo už je za tento záznam zaznamenán
                 else if (Nanana.Text == name.Name && Himself && LRDB.FindRecord(name.RecordID).IsLinkedToUSer)
-                {                    
+                {               
+                    // tak se upozorní uživatel a zruší se výběr
                     DisplayAlert("", "Jako tento záznam už je někdo zaregistrovaný.", "OK");
                     Nanana.Text = "";
                 }
+                // pokud uživatel vybere na hodnocení sebe
                 else if (Nanana.Text == name.Name && LRDB.FindRecord(name.RecordID).Id == LUDB.WhoLogged().Id)
                 {
+                    // tak se upozorní uživatel a zruší se výběr
                     DisplayAlert("", "Nemůžete hodnotit sám sebe", "OK");
                     Nanana.Text = "";
                 }
 
             }
         }
+        // funkce pro zrušení aktuálního určenýho záznamu
         private void Nanana_Defocused(object sender, EventArgs e)
         {
+            // tak se vymažou všechny předvyplněné údaje 
             RaceInput.IsVisible = true;
             GivenRace.IsVisible = false;
             int countOfRecord = 0;
@@ -335,6 +374,7 @@ namespace FurryFriendplexus
 
                 Names_Stack.Children.Remove(Names_Stack.Children[recordID]); 
             };
+            // a nechají se objevit zadávací místa
             Selected = null;
             AlredyRated = null;
         }

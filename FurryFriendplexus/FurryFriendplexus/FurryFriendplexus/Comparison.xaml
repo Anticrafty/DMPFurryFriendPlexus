@@ -5,8 +5,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="FurryFriendplexus.Comparison">
+    <!-- stránka na ukazování vtahů zadaných uživatelů -->
     <ContentPage.Content>
         <StackLayout>
+            <!-- objekt ve do kterého se vkládají zadanný záznamy, přatelé zadaných uživatelů a jejich hodnocení  -->
             <Frame Margin="20"  VerticalOptions="FillAndExpand"  OutlineColor="Black">
                 <!--https://stackoverflow.com/questions/42159261/how-to-add-a-border-to-your-xamarin-form-label-->
                 <ScrollView>

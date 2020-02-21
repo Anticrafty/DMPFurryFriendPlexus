@@ -6,6 +6,7 @@
              mc:Ignorable="d"
              Title ="Ukoncení Applikace"
              x:Class="FurryFriendplexus.EndApp">
+    <!-- Stránka na ukončování aplikace-->
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Doopravdy chcete ukončit Aplikaci?"

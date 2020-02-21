@@ -7,11 +7,16 @@
              Padding="0, 20"
              Title="Side Menu"
              x:Class="FurryFriendplexus.SideMenu">
+    <!-- stránka určená se objevovat v bočním menu -->
     <ContentPage.Content>
         <StackLayout>
+            <!-- Text jména kdo je zrovna přihlášen -->
             <Label x:Name="UsernameV" FontSize="Medium" HorizontalTextAlignment="Center" />
+            <!-- Tlačitko na vrácení se na hlavní stranu-->
             <Button Text="Domov" Clicked="Go_Home"/>
+            <!-- Tlačitko na dostání se na stránku nastavení-->
             <Button Text="Nastavení" />
+            <!-- tlačítko na odhlášení uživatele-->
             <Button Text="Odhlásit" Clicked="LogOut_Click"/>
         </StackLayout>
     </ContentPage.Content>

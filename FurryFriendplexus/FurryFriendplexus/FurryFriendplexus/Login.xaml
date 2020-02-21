@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="FurryFriendplexus.Login">
+    <!-- Stránka na přihlašování uživatele-->
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Přihlašování"
@@ -21,6 +22,7 @@
                 Margin="20,10,20,0"
                 FontSize="Medium"
             />
+            <!-- Políčko pro zadáni přihašovacího jména  -->
             <Entry
                 x:Name="UsernameE"
                 VerticalOptions="Start"
@@ -34,6 +36,7 @@
                 Margin="20,10,20,0"
                 FontSize="Medium"
             />
+            <!-- Políčko na zádávání hesla -->
             <Entry
                 x:Name="PasswordE"
                 VerticalOptions="Start"
@@ -41,7 +44,9 @@
                 Margin="10,0"
                 IsPassword="True"
             />
+            <!-- Tlačítko na přesměrování na stránku registrace -->
             <Button Text="Registrovat se" Margin="0,20,0,0" HorizontalOptions="Center"  FontSize="Micro" Clicked="Registr_Clicked" />
+            <!-- Stránka na spuštění pokusu se přihlásit -->
             <Button Text="Potvrdit" Margin="0,20,0,0" HorizontalOptions="Center" TextColor="Green" Clicked="Confirm_Clicked" FontSize="Large" FontAttributes="Bold" Padding="12"/>
         </StackLayout>
     </ContentPage.Content>
